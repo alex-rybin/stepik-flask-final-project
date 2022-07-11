@@ -6,7 +6,7 @@
         <form method="post" action="{{ url_for('game') }}">
             {{ form.csrf_token() }}
             {{ form.answer }}
-            {{ form.submit }}
+            {{ form.submit_answer }}
         </form>
     </div>
     {% if previous_result %}
@@ -14,4 +14,9 @@
             <p>{{ previous_result }}</p>
         </div>
     {% endif %}
+{% endblock %}
+{% block scripts %}
+    <script>
+        setTimeout(() => document.forms[0].submit(), 10000);
+    </script>
 {% endblock %}

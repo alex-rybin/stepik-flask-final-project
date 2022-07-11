@@ -45,7 +45,7 @@ def game():
 
     answer = request.form.get('answer')
 
-    if answer:
+    if answer is not None:
         answer = int(answer)
         if session['expected_answer'] == answer:
             render_kwargs.update(

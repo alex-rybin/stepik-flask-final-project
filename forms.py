@@ -13,5 +13,5 @@ class StartGame(FlaskForm):
 
 
 class AnswerForm(FlaskForm):
-    answer = IntegerField('Ответ', validators=(InputRequired(),))
-    submit = SubmitField('Отправить')
+    answer = IntegerField('Ответ', validators=(InputRequired(),), default=0)
+    submit_answer = SubmitField('Отправить')
