@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block page_body %}
+    <div class="d-flex flex-column bg-warning bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
+        {{ expression }}' = ?'
+        <form method="post" action="{{ url_for('game') }}">
+            {{ form.csrf_token() }}
+            {{ form.answer }}
+            {{ form.submit }}
+        </form>
+    </div>
+    {% if previous_result %}
+        <div class="{{ result_class }} bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
+            <p>{{ previous_result }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

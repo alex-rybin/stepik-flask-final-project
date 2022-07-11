@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_body %}
+    <div class="d-flex flex-column bg-warning bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
+        <p>{{ description }}</p>
+        <form method="post" action="{{ url_for('start_game') }}">
+            {{ form.csrf_token() }}
+            {{ form.difficulty.label }}
+            {{ form.difficulty }}
+            {{ form.start_button }}
+        </form>
+    </div>
+    {% if error %}
+        <div class="bg-danger bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

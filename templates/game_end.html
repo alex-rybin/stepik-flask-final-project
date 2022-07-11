@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block page_body %}
+    <div class="d-flex flex-column rounded-1 bg-opacity-50 bg-dark m-2 p-2">
+        {{ fail_message }}
+        <a href="{{ url_for('index') }}">
+            <button>Начать заново</button>
+        </a>
+    </div>
+{% endblock %}
