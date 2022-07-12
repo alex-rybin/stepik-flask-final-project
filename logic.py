@@ -17,6 +17,8 @@ def generate_expression(difficulty: DifficultyOptions) -> tuple[str, int]:
         second_number = randint(2, 9)
     elif operation == Operation.MUL and difficulty == DifficultyOptions.HARD:
         second_number = randint(2, 50)
+    elif difficulty == DifficultyOptions.EASY:
+        second_number = randint(2, 100)
     else:
         second_number = randint(2, 1000)
 

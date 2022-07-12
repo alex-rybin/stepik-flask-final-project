@@ -37,7 +37,6 @@ def start_game():
 @app.route('/game/', methods=('post', 'get'))
 def game():
     expression, expected_answer = generate_expression(session['difficulty'])
-    session['expected_answer'] = expected_answer
     render_kwargs = {
         'form': AnswerForm(),
         'expression': expression,
@@ -66,6 +65,8 @@ def game():
                         'previous_result': 'Неправильно',
                     }
                 )
+
+    session['expected_answer'] = expected_answer
     return render_template('game_page.html', **render_kwargs)
 
 

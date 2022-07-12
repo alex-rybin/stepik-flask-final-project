@@ -2,7 +2,7 @@
 
 {% block page_body %}
     <div class="d-flex flex-column bg-warning bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
-        {{ expression }}' = ?'
+        {{ expression }} = ?
         <form method="post" action="{{ url_for('game') }}">
             {{ form.csrf_token() }}
             {{ form.answer }}
@@ -17,6 +17,6 @@
 {% endblock %}
 {% block scripts %}
     <script>
-        setTimeout(() => document.forms[0].submit(), 10000);
+        setTimeout(() => document.forms[0].submit(), 15000);
     </script>
 {% endblock %}
