@@ -1,3 +1,4 @@
+import operator
 from enum import Enum
 
 
@@ -27,3 +28,19 @@ LOST_GAME_MESSAGE = (
 )
 
 LIVES = 3
+
+
+class Operation(StrEnum):
+    ADD = '+'
+    SUB = '-'
+    MUL = '*'
+    DIV = ':'
+
+    @property
+    def function(self) -> callable:
+        return {
+            self.ADD: operator.add,
+            self.SUB: operator.sub,
+            self.MUL: operator.mul,
+            self.DIV: operator.truediv,
+        }[self]
