@@ -1,14 +1,15 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, RadioField, IntegerField
-from wtforms.validators import InputRequired
+from wtforms import SubmitField, RadioField, IntegerField, StringField
+from wtforms.validators import InputRequired, Length
 
-from constants import DifficultyOptions
+from constants import DifficultyOption
 
 
 class StartGame(FlaskForm):
     difficulty = RadioField(
-        'Сложность', choices=DifficultyOptions.get_choices(), default=DifficultyOptions.EASY
+        'Сложность', choices=DifficultyOption.get_choices(), default=DifficultyOption.EASY
     )
+    name = StringField('Ваше имя', validators=(InputRequired(), Length(min=3)))
     start_button = SubmitField('Начать')
 
 

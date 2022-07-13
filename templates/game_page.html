@@ -4,7 +4,7 @@
     <div class="d-flex flex-column bg-warning bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
         <span>Жизней: {{ lives }}</span>
         <span>{{ expression }} = ?</span>
-        <form method="post" action="{{ url_for('game') }}">
+        <form method="post" action="{{ url_for('game', difficulty=difficulty) }}">
             {{ form.csrf_token() }}
             {{ form.answer }}
             {{ form.submit_answer }}

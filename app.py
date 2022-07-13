@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 
 from config import Config
-from constants import GAME_DESCRIPTION, LIVES, LOST_GAME_MESSAGE
+from constants import GAME_DESCRIPTION, LIVES, LOST_GAME_MESSAGE, DifficultyOption
 from forms import StartGame, AnswerForm
 from logic import generate_expression
 
@@ -25,21 +25,25 @@ def index():
 @app.route('/start-game/', methods=('post',))
 def start_game():
     difficulty = request.form.get('difficulty')
+    name = request.form.get('name')
 
     if not difficulty:
         return redirect(url_for('index', error='Не указана сложность'))
+    if not name:
+        return redirect(url_for('index', error='Не указано имя'))
     else:
         session['lives'] = LIVES
-        session['difficulty'] = difficulty
-        return redirect(url_for('game'))
+        session['name'] = name
+        return redirect(url_for('game', difficulty=difficulty))
 
 
-@app.route('/game/', methods=('post', 'get'))
-def game():
-    expression, expected_answer = generate_expression(session['difficulty'])
+@app.route('/game/<string:difficulty>/', methods=('post', 'get'))
+def game(difficulty: str):
+    expression, expected_answer = generate_expression(DifficultyOption(difficulty))
     render_kwargs = {
         'form': AnswerForm(),
         'expression': expression,
+        'difficulty': difficulty,
     }
 
     answer = request.form.get('answer')
@@ -57,7 +61,10 @@ def game():
         else:
             session['lives'] -= 1
             if session['lives'] == 0:
-                return render_template('game_end.html', fail_message=LOST_GAME_MESSAGE)
+                return render_template(
+                    'game_end.html',
+                    fail_message=LOST_GAME_MESSAGE.format(name=session['name']),
+                )
             else:
                 session['answer'] = expected_answer
                 render_kwargs.update(

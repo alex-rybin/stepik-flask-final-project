@@ -11,7 +11,7 @@ class StrEnum(str, Enum):
         return [(x.value, x.value.title()) for x in cls]
 
 
-class DifficultyOptions(StrEnum):
+class DifficultyOption(StrEnum):
     EASY = 'Легко'
     MEDIUM = 'Средне'
     HARD = 'Сложно'
@@ -24,7 +24,7 @@ GAME_DESCRIPTION = (
 )
 
 LOST_GAME_MESSAGE = (
-    'Фантом алгебры съел вас :('
+    'Фантом алгебры съел вас, {name} :('
 )
 
 LIVES = 3
