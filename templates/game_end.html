@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block page_body %}
-    <div class="d-flex flex-column rounded-1 bg-opacity-50 bg-dark m-2 p-2">
-        {{ fail_message }}
-        <a href="{{ url_for('index') }}">
+    <div class="d-flex flex-column align-items-start rounded-1 bg-opacity-50 bg-dark m-2 p-2">
+        <span>{{ fail_message }}</span>
+        <a href="/">
             <button>Начать заново</button>
         </a>
     </div>
