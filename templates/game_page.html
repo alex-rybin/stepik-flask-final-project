@@ -2,7 +2,8 @@
 
 {% block page_body %}
     <div class="d-flex flex-column bg-warning bg-opacity-50 shadow-sm m-2 p-2 rounded-1">
-        {{ expression }} = ?
+        <span>Жизней: {{ lives }}</span>
+        <span>{{ expression }} = ?</span>
         <form method="post" action="{{ url_for('game') }}">
             {{ form.csrf_token() }}
             {{ form.answer }}

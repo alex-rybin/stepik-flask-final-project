@@ -68,6 +68,7 @@ def game():
                 )
 
     session['expected_answer'] = expected_answer
+    render_kwargs['lives'] = session['lives']
     return render_template('game_page.html', **render_kwargs)
 
 
