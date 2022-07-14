@@ -9,17 +9,20 @@ def generate_expression(difficulty: DifficultyOption) -> tuple[str, int]:
     else:
         operation = choice(list(Operation))
 
-    first_number = randint(2, 1000)
-
     if operation == Operation.DIV:
+        first_number = randint(2, 1000)
         second_number = choice(_get_divisors(first_number))
     elif operation == Operation.MUL and difficulty == DifficultyOption.MEDIUM:
+        first_number = randint(2, 100)
         second_number = randint(2, 9)
     elif operation == Operation.MUL and difficulty == DifficultyOption.HARD:
+        first_number = randint(2, 500)
         second_number = randint(2, 50)
     elif difficulty == DifficultyOption.EASY:
+        first_number = randint(2, 1000)
         second_number = randint(2, 100)
     else:
+        first_number = randint(2, 1000)
         second_number = randint(2, 1000)
 
     expression = f'{first_number} {operation} {second_number}'
