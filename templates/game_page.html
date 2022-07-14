@@ -10,7 +10,7 @@
             {{ form.submit_answer }}
         </form>
         <div>
-            <span>Осталось времени: </span><span id="counter">15</span>
+            <span>Осталось времени: </span><span id="counter">30</span>
         </div>
     </div>
     {% if previous_result %}
@@ -27,7 +27,7 @@
             currentValue -= 1;
             element.innerHTML = currentValue.toString();
         }
-        setTimeout(() => document.forms[0].submit(), 15000);
+        setTimeout(() => document.forms[0].submit(), 30000);
         setInterval(updateCount, 1000);
     </script>
 {% endblock %}
